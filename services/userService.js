@@ -14,7 +14,6 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
       console.log("new user add done");
       console.log(res.id);
       return res.id
-
     })
     return data
 }
