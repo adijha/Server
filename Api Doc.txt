@@ -1,0 +1,28 @@
+For Otp and resend Otp
+
+url : https://taar-app.herokuapp.com/user/Otp
+type: post
+data needed: phoneno
+return : phoneno, Otp
+
+
+for verify otp
+
+url: https://taar-app.herokuapp.com/user/verify
+type: post
+data needed: phoneno, otp(user input)
+return: token (contain all userinfo, id)
+
+
+for profile & update profile
+
+url: https://taar-app.herokuapp.com/user/profile
+type: post
+data needed: firstname, lastname, photo, id
+return: token (contain all userinfo, id)
+
+
+//Github clone repo
+https://github.com/adijha/TAAR-Server
+npm install
+npm start
