@@ -1,14 +1,16 @@
 let router = require('express').Router()
 let userController = require('../controllers/userController')
 
-router.post('/', userController.sendOtp)
+router.post('/gen', userController.sendOtp)
 
-router.post('/resend', userController.resendOtp)
+router.post('/verify', userController.verify)
 
-router.post('/verify', )
+// router.post('/verify', )
+//
+// router.post('/profile', )
+//
+// router.get('/profile')
 
-router.post('/profile', )
-
-router.get('/profile')
+router.get('/userbyPhone', userController.user)
 
 module.exports = router

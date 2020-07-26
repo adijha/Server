@@ -9,30 +9,65 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
       otp,
       date
     }
-    console.log(userObj);
-    let data = await db.collection('users').add(userObj).then(res=>{
-      console.log("new user add done");
-      console.log(res.id);
-      return res.id
+    
+
+    let datas = await db.collection('users')
+    .where('phoneno', '==', phoneno)
+    .get().then(async querySnapshot=>{
+      const datass = await querySnapshot.docs.map(doc =>  doc.id);
+
+      return datass
+
     })
+
+    if (datas.length>0) {
+
+      let data=   await db.collection('users')
+        .doc(datas[0])
+        .update(userObj).then(res=>{
+          return res
+
+        })
+    }
+    else {
+      let data = await db.collection('users').add(userObj).then(res=>{
+        console.log("new user add done");
+        // console.log(res.id);
+        return res.id
+    })
+
+
+
     return data
 }
+}
 
-module.exports.resaveOtp = async (phoneno, otp, date, documentKey)=>{
-  const userObj = {
-    firstname:'',
-    lastname:'',
-    photo:'',
-    phoneno,
-    otp,
-    date
-  }
-  await db.collection('users')
-  .doc(documentKey)
-  .update(userObj).then(res=>{
-    console.log(" user update done");
-    console.log(res.id);
-    return res.id
+
+module.exports.verifyOtp = async (phoneno)=>{
+
+  let datas = await db.collection('users')
+  .where('phoneno', '==', phoneno)
+  .get().then(async querySnapshot=>{
+    const userData = await querySnapshot.docs.map(doc =>  doc);
+    // const userId = await querySnapshot.docs.map(doc =>  doc.id);
+
+    return (userData)
 
   })
+  return datas
+
+}
+
+
+module.exports.userByPhone = async (phoneno)=>{
+
+  let data = await db.collection('users')
+  .where('phoneno', '==', phoneno)
+  .get().then(async querySnapshot=>{
+    const datass = await querySnapshot.docs.map(doc => doc.data());
+
+    return datass
+
+  })
+  return data
 }
