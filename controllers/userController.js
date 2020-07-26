@@ -58,7 +58,7 @@ exports.verify = async (req, res)=>{
 
   }
   else {
-    res.send("No phone no. and otp found")
+    res.send("No phoneno otp found")
   }
 
 }
@@ -102,6 +102,7 @@ exports.user = async (req, res)=>{
   let phoneNo = '7988783588'
 
   let showUser = await userByPhone(phoneNo)
+  console.log(showUser, "showUser");
 
   res.send(showUser)
 
