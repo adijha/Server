@@ -18,7 +18,7 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
     return data
 }
 
-module.exports.resendOtp = async (phoneno, otp, date, documentKey)=>{
+module.exports.resaveOtp = async (phoneno, otp, date, documentKey)=>{
   const userObj = {
     firstname:'',
     lastname:'',
