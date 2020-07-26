@@ -9,7 +9,7 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
       otp,
       date
     }
-    
+
 
     let datas = await db.collection('users')
     .where('phoneno', '==', phoneno)
@@ -58,6 +58,36 @@ module.exports.verifyOtp = async (phoneno)=>{
 
 }
 
+
+module.exports.saveProfile = async ({firstname, lastname, photo, phoneno, id}) =>{
+  try {
+    let userObj = {firstname, lastname, photo, phoneno}
+    let data=   await db.collection('users')
+      .doc(id)
+      .update(userObj).then(res=>{
+        return res
+
+      })
+
+      return true
+  } catch (e) {
+    return false
+  }
+
+}
+
+module.exports.userById = async (id)=>{
+
+  let data = await db.collection('users')
+  .doc(id)
+  .get().then(async querySnapshot=>{
+    //const datass = await querySnapshot.docs.map(doc => doc.data());
+    return querySnapshot;
+
+
+  })
+  return data
+}
 
 module.exports.userByPhone = async (phoneno)=>{
 

@@ -1,6 +1,6 @@
 let {generate} = require('../utils/generateOtp');
 let moment = require('moment');
-let {saveOtp, verifyOtp, userByPhone} = require('../services/userService')
+let {saveOtp, verifyOtp, saveProfile, userById,userByPhone} = require('../services/userService')
 let text = require('textbelt');
 const jwt = require('jsonwebtoken');
 
@@ -58,7 +58,42 @@ exports.verify = async (req, res)=>{
 
   }
   else {
-    res.send("No phoneno otp found")
+    res.send("No phone no. and otp found")
+  }
+
+}
+
+
+exports.profile = async (req, res)=>{
+
+  let obj = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    photo: req.body.img,
+    phoneno: req.body.phoneno,
+    id: req.body.id
+  }
+
+  let saveProfileResponse = await saveProfile(obj)
+  if (saveProfileResponse===true) {
+    let showUser = await userById(req.body.id)
+
+    let userdata = showUser.data()
+    let userId = showUser.id
+
+    let userInfo = {
+      id: userId,
+      data: userdata,
+
+    };
+      const token = jwt.sign(userInfo, process.env.TOKEN_SECRET);
+
+
+
+    res.status(200).send(token)
+  }
+  else {
+    res.send("something wrong")
   }
 
 }
