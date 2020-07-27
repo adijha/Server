@@ -18,7 +18,7 @@ for profile & update profile
 
 url: https://taar-app.herokuapp.com/user/profile
 type: post
-data needed: firstname, lastname, photo, id
+data needed: firstname, lastname, photo, id-compulsory
 return: token (contain all userinfo, id)
 
 
