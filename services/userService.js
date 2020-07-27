@@ -67,10 +67,10 @@ module.exports.saveProfile = async ({firstname, lastname, photo, phoneno, id}) =
     let userObj = {}
     if (photo===""||null||undefined) {
        console.log(photo===""||null||undefined)
-      userObj = {firstname, lastname, phoneno}
+      userObj = {firstname, lastname, phoneno, gender}
     }
     else {
-      userObj = {firstname, lastname, photo, phoneno}
+      userObj = {firstname, lastname, photo, phoneno, gender}
     }
 
     let data=   await db.collection('users')

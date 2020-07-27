@@ -71,7 +71,8 @@ console.log(req.body);
     lastname: req.body.lastname,
     photo: req.body.photo,
     phoneno: req.body.phoneno,
-    id: req.body.id
+    id: req.body.id,
+    gender:req.body.gender
   }
 
   let saveProfileResponse = await saveProfile(obj)
