@@ -3,7 +3,7 @@ let moment = require('moment');
 let {saveOtp, verifyOtp, saveProfile, userById,userByPhone} = require('../services/userService')
 let text = require('textbelt');
 const jwt = require('jsonwebtoken');
-
+let {sentSms} = require('../utils/sms')
 
 exports.sendOtp = async (req, res)=>{
 
@@ -13,8 +13,8 @@ exports.sendOtp = async (req, res)=>{
 
   let date =   new moment(new Date()).format('DD-MM-YYYY hh:mm:s')
 
-
-  let saveUser = await saveOtp(phoneNo, gen_otp, date)
+  let sentMessage = await sentSms(phoneNo, gen_otp)
+  let saveUser = await saveOtp(phoneNo, gen_otp, date, sentMessage)
 
   console.log(saveUser, "saveUser");
   res.send({otp: gen_otp, phone:phoneNo})

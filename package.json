@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0",
     "nodemon": "^2.0.4",
-    "textbelt": "0.0.4"
+    "textbelt": "0.0.4",
+    "twilio": "^3.48.1"
   }
 }

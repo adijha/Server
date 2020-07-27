@@ -1,13 +1,16 @@
 let db = require('../config/database.js')
 
-module.exports.saveOtp = async (phoneno, otp, date) =>{
+module.exports.saveOtp = async (phoneno, otp, date, smsId) =>{
     const userObj = {
+      gender:'',
+
       firstname:'',
       lastname:'',
       photo:'',
       phoneno,
       otp,
-      date
+      date,
+      smsId
     }
 
 
@@ -22,7 +25,7 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
 
     if (datas.length>0) {
 
-      let data=   await db.collection('users')
+      let data =   await db.collection('users')
         .doc(datas[0])
         .update(userObj).then(res=>{
           return res
