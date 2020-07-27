@@ -65,7 +65,8 @@ module.exports.verifyOtp = async (phoneno)=>{
 module.exports.saveProfile = async ({firstname, lastname, photo, phoneno, id}) =>{
   try {
     let userObj = {}
-    if (!photo) {
+    if (photo===""||null||undefined) {
+       console.log(photo===""||null||undefined)
       userObj = {firstname, lastname, phoneno}
     }
     else {

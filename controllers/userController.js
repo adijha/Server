@@ -65,11 +65,11 @@ exports.verify = async (req, res)=>{
 
 
 exports.profile = async (req, res)=>{
-
+console.log(req.body);
   let obj = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    photo: req.body.img,
+    photo: req.body.photo,
     phoneno: req.body.phoneno,
     id: req.body.id
   }
