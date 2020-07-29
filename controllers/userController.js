@@ -13,7 +13,7 @@ exports.sendOtp = async (req, res)=>{
 
   let date =   new moment(new Date()).format('DD-MM-YYYY hh:mm:s')
 
-  let sentMessage = await sentSms(phoneNo, gen_otp)
+  // let sentMessage = await sentSms(phoneNo, gen_otp)
   let saveUser = await saveOtp(phoneNo, gen_otp, date, sentMessage)
 
   console.log(saveUser, "saveUser");
