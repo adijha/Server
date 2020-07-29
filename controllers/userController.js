@@ -65,7 +65,7 @@ exports.verify = async (req, res)=>{
 
 
 exports.profile = async (req, res)=>{
-console.log(req.body);
+// console.log(req.body);
   let obj = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -96,7 +96,8 @@ console.log(req.body);
   else {
     res.send("something wrong")
   }
-
+console.log(req.files);
+console.log(req.body);
 }
 
 exports.user = async (req, res)=>{

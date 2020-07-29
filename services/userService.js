@@ -62,15 +62,16 @@ module.exports.verifyOtp = async (phoneno)=>{
 }
 
 
-module.exports.saveProfile = async ({firstname, lastname, photo, phoneno, id}) =>{
+module.exports.saveProfile = async ({firstname, lastname, photo, phoneno, id, gender}) =>{
+
   try {
     let userObj = {}
     if (photo===""||null||undefined) {
        console.log(photo===""||null||undefined)
-      userObj = {firstname, lastname, phoneno, gender}
+      userObj = {firstname, lastname, phoneno, gender, id}
     }
     else {
-      userObj = {firstname, lastname, photo, phoneno, gender}
+      userObj = {firstname, lastname, photo, phoneno, gender, id}
     }
 
     let data=   await db.collection('users')
