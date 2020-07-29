@@ -7,9 +7,10 @@ module.exports.saveOtp = async (phoneno, otp, date) =>{
       firstname:'',
       lastname:'',
       photo:'',
+      gender:'',
       phoneno,
       otp,
-      date,
+      date
 
     }
 
