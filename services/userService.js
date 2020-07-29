@@ -1,6 +1,6 @@
 let db = require('../config/database.js')
 
-module.exports.saveOtp = async (phoneno, otp, date, smsId) =>{
+module.exports.saveOtp = async (phoneno, otp, date) =>{
     const userObj = {
       gender:'',
 
@@ -10,7 +10,7 @@ module.exports.saveOtp = async (phoneno, otp, date, smsId) =>{
       phoneno,
       otp,
       date,
-      smsId
+
     }
 
 
